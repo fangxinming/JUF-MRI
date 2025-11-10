@@ -57,7 +57,7 @@ sh train_rec.sh
 Modify the test configurations in Python file **[test_metrics.py]**. Then run:
 
 ```
-python test_PSNR.py
+python test_metric.py
 ```
 
 ## Acknowledgement
