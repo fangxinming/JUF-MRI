@@ -38,7 +38,7 @@ python data/read_nii_to_img.py
 [](https://github.com/lpcccc-cv/MC-DuDoNet?tab=readme-ov-file#22-parpare-datasets-for-fastmri)
 
 The original Fastmri dataset can be downloaded at:  [[Fastmri dataset]](https://fastmri.med.nyu.edu/).  
-For the paired Fastmri data (PD and FSPD), we follow the data preparation process of MINet and MTrans. For more details, please see  [[MINet]](https://github.com/chunmeifeng/MINet), [[MTrans]](https://github.com/chunmeifeng/MTrans) and [[MC-DudoNet]](https://github.com/lpcccc-cv/MC-DuDoNet).
+For the paired Fastmri data (PD and FSPD), we follow the data preparation process of MINet and MTrans. For more details, please see  [[MINet]](https://github.com/chunmeifeng/MINet), [[MTrans]](https://github.com/chunmeifeng/MTrans) and [[MC-DuDoNet]](https://github.com/lpcccc-cv/MC-DuDoNet).
 
 If you prefer not to preprocess the datasets yourself, you can download our preprocessed versions from the following link.
 [[dataset]](https://drive.google.com/drive/folders/1A3A8dZsLHmaTwm4cbn671DYfcOzsc3db?usp=drive_link).
@@ -61,4 +61,4 @@ python test_PSNR.py
 ```
 
 ## Acknowledgement
-Our codes are built based on [LOUPE](https://github.com/cagladbahadir/LOUPE/) , [MC-DudoNet](https://github.com/lpcccc-cv/MC-DuDoNet) and [[MTrans]](https://github.com/chunmeifeng/MTrans). Thank them for their outstanding contributions to the community.
+Our codes are built based on [LOUPE](https://github.com/cagladbahadir/LOUPE/) , [MC-DuDoNet](https://github.com/lpcccc-cv/MC-DuDoNet) and [[MTrans]](https://github.com/chunmeifeng/MTrans). Thank them for their outstanding contributions to the community.
