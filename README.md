@@ -14,6 +14,9 @@ Compile DCNv2:
 cd $ROOT/models/modules/DCNv2
 sh make.sh
 ```
+For more implementation details about DCN, please see [DCNv2].
+
+
 ## Datasets
 ### Parpare Datasets for IXI and BrainTS:
 
@@ -28,7 +31,7 @@ python data/read_nii_to_img.py
 000001.png,  000002.png,  000003.png,  000003.png ...
 [Target folder:]
 000001.png,  000002.png,  000003.png,  000003.png ...
-# Note that the images in the T1 and T2 folders correspond one to one. The undersampled target images will be automatically generated in the training phase.
+# Note that the images in the Ref and Target folders correspond one to one. The undersampled target images will be automatically generated in the training phase.
 ```
 ### 2.2. Parpare Datasets for Fastmri:
 
