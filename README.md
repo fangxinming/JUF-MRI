@@ -50,7 +50,7 @@ If you prefer not to preprocess the datasets yourself, you can download our prep
 Modify your dataset paths and training parameters in **[configs/only_reconstruction.yaml]**, 
 and update your dataset and mask paths in **[data/(IXI, brain, fastmri)_dataset]**, then run：
 ```
-sh train_rec.sh
+sh train.sh
 ```
 
 ## Test
