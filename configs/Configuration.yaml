@@ -1,0 +1,93 @@
+
+model_G: JUF_MRI_diffusion
+#['JUF_MRI','JUF_MRI_diffusion']
+
+
+
+model: joint-optimize # 如果是MRI多模态重建 ['joint-optimize', 'ref-rec']  #网络任务
+                 # 如果网络任务为joint_optimize 那么undersample为ING
+
+
+undersample: random  # 'equ' or 'random' or 'learned' or 'spiral' or 'radial'
+scale: 10 # scale factor for sr; acc. ratio for reconstruction
+batch_size: 4
+epoch: 1
+mode: IXI    #'IXI' , 'brain=Brats2018' , 'FastMRI'
+gpu_ids: [0]
+loss: l1    # ['l1','l2','guass','']
+
+path:
+  pretrain_model_G: ~ # for fine-tune your reconstruction model, put your pre-trained model path here
+  resume_state: ~
+
+
+distortion: sr
+use_tb_logger: True
+
+data1: True  # ref-rec reconstruct the first modal
+dist: True
+   ### data set
+k_loss: False
+
+datasets:
+  train:
+    mode: IXI   ### data set
+    task: rec   # ['rec', 'sr']    
+    scale: 10
+    interval_list: [1]
+    random_reverse: true
+    border_mode: false
+    dataroot_GT: /home/xinming/JUF_MRI/dataset/IXI/train/T2PNG   # The training file path of your target image
+    use_shuffle: true
+    n_workers: 2 
+    batch_size: 4
+    crop_size: 256
+    use_flip: True
+    use_rot: True
+    hr_in: True
+    undersample: equ   #'equ' or 'random'
+  
+  val:
+    mode: IXI    ### data set
+    task: rec    # ['rec', 'sr'] 
+    scale: 10
+    test_size: 256
+    dataroot_GT: /home/xinming/JUF_MRI/dataset/IXI/val/T2PNG  # The testing file path of your target image
+    hr_in: True
+    undersample: equ   #'equ' or 'random'
+
+
+network_G:
+  which_model_G: JUF_MRI_diffusion 
+  c_image: 1
+  nf: 32
+  sparsity: 0.1  # x10 AC
+  image_size: [256,256]  # for IXI
+  stages: 4
+  groups: 4
+  RBs: 12
+
+
+train:
+  lr_G: !!float 1e-4
+  lr_scheme: CosineAnnealingLR_Restart
+  beta1: 0.9
+  beta2: 0.99
+  warmup_iter: -1
+  T_period: [300000]
+  restarts: [300000]
+  restart_weights: [1]
+  eta_min: !!float 1e-4
+
+  pixel_criterion: l1
+  pixel_weight: 1.0
+  niter: 39900
+  val_freq: !!float 399
+
+  manual_seed: 0
+
+logger:
+  print_freq: 10
+  save_checkpoint_freq: !!float 3990
+
+
