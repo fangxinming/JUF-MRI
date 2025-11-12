@@ -15,7 +15,7 @@ Compile DCNv2:
 cd $ROOT/models/modules/DCNv2
 sh make.sh
 ```
-For more implementation details about DCN, please see [DCNv2].
+For more implementation details about DCN, please see [[DCNv2]](https://github.com/lucasjinreal/DCNv2_latest).
 
 
 ## Datasets
