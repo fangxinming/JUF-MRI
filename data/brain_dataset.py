@@ -89,8 +89,7 @@ def crop_k_data(data, scale):
 
 class brain_train(data.Dataset):
     def __init__(self, opt, train):
-        # 此处的opt为一个字典类型的变量， 通常用于储存各种配置参数或选项
-        # 此处的opt为datasets:分为train和val
+
         super(brain_train, self).__init__()
         path = opt['dataroot_GT']
         GT_list = sorted(
@@ -114,24 +113,22 @@ class brain_train(data.Dataset):
 
     def __getitem__(self, idx):
         GT_img_path = self.GT_paths[idx]
-        # 索引处对应的目标图像路径
         ref_GT_img_path = self.GT_paths[idx].replace('T2', 'T1')
-        # 获取与目标图像对应的参考图像路径，通过将文件名中的 T2 替换为 PD
 
         if self.task == 'rec':
             diffusion_img_path = None
             if self.model == 'ref-rec' and self.undersample == 'learned' and self.diffusion in ['Loupe']:
-                mask_path1 = '/home/xinming/MCDudo/dataset/Brats2018/' + self.model_G + '_mask/'
+                mask_path1 = '/home/xinming/JUF_MRI/dataset/Brats2018/'+self.model_G+'_mask/'
                 mask_path = mask_path1 + 'x' + str(self.scale) + '_mask_hard_Brats2018.png'
 
                 # 保存已学习掩码的路径
-            elif self.model == 'ref-rec' and self.undersample == 'learned' and self.diffusion == 'diffusion':
-                mask_path1 = '/home/xinming/MCDudo/dataset/Brats2018/' + self.model_G + '_mask/'
+            elif self.model == 'ref-rec' and self.undersample == 'learned' and self.diffusion in 'diffusion':
+                mask_path1 = '/home/xinming/JUF_MRI/Brats2018_mask/Brats2018_hard_mask/'
                 mask_path = mask_path1 + 'x' + str(self.scale) + '_mask_hard_Brats2018.png'
 
 
             elif self.model == 'ref-rec' and self.undersample != 'learned':
-                mask_path1 = '/home/xinming/MCDudo/dataset/Brats2018/mask/'
+                mask_path1='/home/xinming/JUF_MRI/Brats2018_mask/Brats2018_fixed_mask/'
                 mask_path = mask_path1 + 'mask_' + self.undersample + '_x' + str(self.scale) + '.png'
 
 

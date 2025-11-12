@@ -124,18 +124,18 @@ class knee_train(data.Dataset):
 
         if self.task == 'rec':
             diffusion_img_path = None
-            if self.model == 'ref-rec' and self.undersample == 'learned' and self.diffusion in ['Loupe', 'mean']:
-                mask_path1 = '/home/xinming/MCDudo/dataset/fastmri/knee_singlecoil/' + self.model_G + '_mask/'
+            if self.model == 'ref-rec' and self.undersample == 'learned' and self.diffusion in ['Loupe']:
+                mask_path1 = '/home/xinming/JUF_MRI/dataset/fastmri/knee_singlecoil/' + self.model_G + '_mask/'
                 mask_path = mask_path1 + 'x' + str(self.scale) + '_mask_hard_fastmri.png'
 
                 # 保存已学习掩码的路径
             elif self.model == 'ref-rec' and self.undersample == 'learned' and self.diffusion == 'diffusion':
-                mask_path1 = '/home/xinming/MCDudo/dataset/fastmri/knee_singlecoil/' + self.model_G + '_mask/'
+                mask_path1 = '/home/xinming/JUF_MRI/FastMRI_mask/FastMRI_hard_mask/'
                 mask_path = mask_path1 + 'x' + str(self.scale) + '_mask_hard_fastmri.png'
 
 
             elif self.model == 'ref-rec' and self.undersample != 'learned':
-                mask_path1 = '/home/xinming/MCDudo/dataset/fastmri/mask/'
+                mask_path1 = '/home/xinming/JUF_MRI/FastMRI_mask/FastMRI_fixed_mask/'
                 mask_path = mask_path1 + 'mask_' + self.undersample + '_x' + str(self.scale) + '.png'
 
 
