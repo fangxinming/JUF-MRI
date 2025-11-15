@@ -1,4 +1,5 @@
 
+
 #  Frequency Error-Guided Under-sampling Optimization for Multi-Contrast MRI Reconstruction
 
 ## Environment
@@ -49,12 +50,16 @@ If you prefer not to preprocess the datasets yourself, you can download our prep
 ## Train
 
 Modify your dataset paths and training parameters in **[configs/only_reconstruction.yaml]**, 
-and update your dataset and mask paths in **[data/(IXI, brain, fastmri)_dataset]**. If you want to perform the **joint optimization** task, set the **model** in `Configuration.yaml` to `'joint-optimize'`, and if you want to perform the **reconstruction** task, set the **model** to `'ref-rec'`.
+and update your dataset and mask paths in **[data/(IXI, brain, fastmri)_dataset]**. If you want to perform the **joint optimization** task, set the **model** in `Configuration.yaml` to `'joint-optimize'`, and if you want to perform the **reconstruction** task, set the **model** to `'ref-rec'`. 
 
 then run：
 ```
 sh train.sh
 ```
+In addition, if you want to jointly optimize the sampling mask and reconstruction network using **LOUPE**, please append **_Loupe** to the reconstruction method under **model_G** in `Configuration.yaml`.
+
+If you intend to perform joint optimization using the **FEP strategy proposed in JUF-MRI**, append **_diffusion** instead, and make sure to generate images using the conditional diffusion model and place them in the training directory of your dataset.
+
 
 ## Test
 Modify the test configurations in Python file **[test_metrics.py]**. Then run:
